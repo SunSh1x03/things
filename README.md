@@ -51,4 +51,32 @@ Repita o ciclo com dificuldade crescente e registre aprendizados em um blog ou R
 - Projetos completos com documentação e testes.
 - Feedback recebido (estrelas, forks, comentários) e incorporado.
 
+## Ferramenta de apoio: verificação passiva de Log4j
+
+O repositório inclui o script `passive_log4j_check.py`, que realiza uma checagem passiva em endpoints HTTP/HTTPS em busca de indícios da vulnerabilidade Log4Shell (Log4j). O script **não** executa exploração ativa: ele apenas busca evidências em respostas e cabeçalhos.
+
+### Requisitos
+- Python 3.8+
+- Dependências listadas em `requirements.txt`
+
+Instale as dependências com:
+
+```bash
+pip install -r requirements.txt
+```
+
+### Uso
+
+```bash
+python passive_log4j_check.py https://example.com outro-alvo.com
+```
+
+Para cada URL fornecida o script:
+- Normaliza o esquema (https por padrão).
+- Faz uma requisição GET com timeout de 10 segundos.
+- Analisa cabeçalhos, corpo e links para identificar padrões relacionados a Log4j/Log4Shell.
+- Exibe um resumo com possíveis indícios encontrados.
+
+Use somente em ambientes onde você tem autorização explícita.
+
 Mantenha disciplina, ajuste o plano conforme necessário e celebre cada conquista. O importante é demonstrar crescimento contínuo e profissionalismo em público.
